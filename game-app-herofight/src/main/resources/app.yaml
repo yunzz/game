@@ -1,0 +1,5 @@
+app:
+  name: game-app-hf
+  port: 9001
+  http:
+    port: 9101

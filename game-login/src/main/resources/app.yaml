@@ -1,0 +1,4 @@
+app:
+  name: game-login
+  http:
+    port: 9006

@@ -1,0 +1,50 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package proto;
+import "common.proto";
+import "fightgame.proto";
+import "fivestone.proto";
+// 命名规范：
+// content中的名字结尾必须以下后缀中的一个
+// Req = 请求,要求一定有返回着,需要用户登录
+// Res = Req消息的返回值
+// Msg = 服务器主动推送信息
+// Tel = 客户端请求，不需要进行回复的消息
+message Message {
+
+    int64 seq = 1; // 消息编号
+    fixed64 uid = 2; // 用户唯一标识符
+    repeated fixed64 broadcastUid = 3; // 需要收到广播的玩家
+    oneof content {
+        HbReq hbReq = 9;
+        HbRes hbRes = 10;
+        Success successRes = 11;
+        Error errorRes = 12;
+        LoginReq loginReq = 13;
+        LoginRes loginRes = 14;
+        ServerReq serverReq = 15;
+        // LOCK 业务消息写在下面
+        MoveTel moveTel = 101;
+        MoveMsg moveMsg = 102;
+        EnterRoomReq EnterRoomReq = 103;
+        CreateRoomReq CrateRoomReq = 104;
+        CreateRoomRes CrateRoomRes = 105;
+        JoinRoomReq JoinRoomReq = 106;
+        FindRoomReq FindRoomReq = 107;
+        FindRoomRes FindRoomRes = 108;
+        ExitRoomReq ExitRoomReq = 109;
+        StartGameReq StartGameReq = 110;
+
+        // fight
+
+        // 五子棋
+        EnterRoomFvstReq EnterRoomFvstReq = 10001;
+        CreateRoomFvstReq CreateRoomFvstReq = 10002;
+        PutKeyFvstReq PutKeyFvstReq = 10003;
+        PutKeyFvstRes PutKeyFvstRes = 10004;
+        StartFvstMsg StartFvstMsg = 10005;
+        PutKeyFvstMsg PutKeyFvstMsg = 10006;
+        GameEndFvstMsg GameEndFvstMsg = 10007;
+        EnterRoomFvstRes EnterRoomFvstRes = 10008;
+    }
+}

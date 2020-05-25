@@ -1,0 +1,37 @@
+syntax = "proto3";
+package proto;
+option java_multiple_files = true;
+message Error {
+    int32 index = 1;
+    string content = 2;
+}
+message Success {
+    string ok = 1;
+}
+
+//心跳协议
+message HbReq {
+}
+
+message HbRes {
+    int64 time = 1;
+    string zone = 2;
+}
+
+// 服务器之间的消息
+message ServerReq {
+    int32 type = 1; // 服务器类型,1:gateway 2:app
+    string serverId = 2; // 唯一标识
+}
+
+// 登录登出 其他操作的前提
+message LoginReq {
+    string token = 1;
+    string username = 2;
+
+}
+message LoginRes {
+}
+message LogoutReq {
+}
+

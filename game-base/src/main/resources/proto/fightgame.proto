@@ -1,0 +1,45 @@
+syntax = "proto3";
+package proto;
+option java_multiple_files = true;
+
+message MoveTel {
+    double x = 1;
+    double y = 2;
+}
+message MoveMsg {
+    double x = 1;
+    double y = 2;
+}
+
+message EnterRoomReq {
+    int32 roomId = 1;
+}
+message CreateRoomReq {
+}
+message CreateRoomRes {
+    int32 roomId = 1;
+}
+message JoinRoomReq {
+    int32 roomId = 1;
+}
+
+
+message BattleFightReq {
+    // 玩家阵容
+    repeated BattlePos BattlePos = 1;
+    // 敌方阵容Id
+    int64 battleId = 2;
+}
+
+message BattleFightRes {
+    // true成功，false失败
+    bool result = 1;
+    // 星数
+    int32 star = 2;
+}
+
+message BattlePos {
+    int32 x = 1;
+    int32 y = 2;
+    int64 heroId = 3;
+}

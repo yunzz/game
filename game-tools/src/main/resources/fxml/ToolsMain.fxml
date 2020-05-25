@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.tools.controller.MainUiController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button fx:id="open" mnemonicParsing="false" text="打开Excel" />
+            <Button fx:id="saveJson" mnemonicParsing="false" text="生成json" />
+            <Button fx:id="saveJsonAs" mnemonicParsing="false" text="生成json到.." />
+         </items>
+      </ToolBar>
+      <SplitPane dividerPositions="0.7027027027027027" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="798.0">
+               <children>
+                  <HBox layoutX="39.0" layoutY="87.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ListView fx:id="leftList" prefHeight="360.0" prefWidth="272.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextArea fx:id="console" prefHeight="109.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+            <Label fx:id="status" text="Label" />
+            <Separator orientation="VERTICAL" prefHeight="5.0" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>

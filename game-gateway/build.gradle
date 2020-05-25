@@ -1,0 +1,7 @@
+apply plugin: 'org.springframework.boot'
+jar {
+    enabled = true
+}
+bootJar {
+    mainClassName = "game.gateway.GatewayApp"
+}

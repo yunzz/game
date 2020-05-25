@@ -1,0 +1,11 @@
+ext.lib = [
+        protostuff            : "1.1.3",
+        protobuf              : "3.5.1",
+        logback               : "1.2.3",
+        netflix               : "2.0.1.RELEASE",
+        netty                 : "4.1.25.Final",
+        mysql                 : "5.1.38",
+        mybatisSpring         : "1.3.2",
+        jackson               : "2.9.7",
+]
+

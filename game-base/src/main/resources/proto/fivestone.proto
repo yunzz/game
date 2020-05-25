@@ -1,0 +1,55 @@
+syntax = "proto3";
+package proto;
+option java_multiple_files = true;
+
+message EnterRoomFvstReq {
+    int32 roomId = 1;
+}
+message EnterRoomFvstRes {
+    int32 side = 1;
+}
+message CreateRoomFvstReq {
+}
+message CreateRoomFvstRes {
+    int32 roomId = 1;
+}
+message FindRoomReq {
+}
+message FindRoomRes {
+    int32 roomId = 1;
+    int32 side = 2;
+}
+// 离开当前房间
+message ExitRoomReq {
+}
+
+// 开始游戏
+message StartGameReq{
+
+}
+
+// 落子
+message PutKeyFvstReq {
+    int32 x = 1;
+    int32 y = 2;
+}
+message PutKeyFvstRes {
+    // 是否胜利
+    bool win = 1;
+}
+
+// 开始游戏
+message StartFvstMsg {
+    // 对方名称
+    string name = 1;
+}
+// 落子推送
+message PutKeyFvstMsg {
+    int32 x = 1;
+    int32 y = 2;
+}
+
+
+message GameEndFvstMsg {
+    bool win = 1;
+}

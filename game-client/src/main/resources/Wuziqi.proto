@@ -1,0 +1,137 @@
+syntax = "proto3";
+package Message;
+option java_package = "proto";
+option optimize_for = SPEED;
+option java_multiple_files = true;
+
+message FsError {
+}
+
+// msgNo:200
+message FsGameStartReq {
+    int64 roomId = 1; //房间id
+}
+// 落子 msgNo:101
+message FsPutReq {
+    int32 x = 1;
+    int32 y = 2;
+}
+
+// msgNo: -101
+message FsPutRes {
+}
+
+// 落子推送 msgNo:-201
+message FsPutPush {
+    int32 x = 1;
+    int32 y = 2;
+}
+
+// 游戏开始推送 msgNo:-202
+message FsGameStartPush {
+    Side side = 1; // 黑子，白子
+    int64 startTime = 2; // 开始时间 ms
+    int64 roundTime = 3; // 回合时间 ms
+    int32 revertCount = 5; // 可悔棋次数
+    int64 revertTime = 6; // 悔棋时间
+    int32 surrenderRound = 7; // 认输回合
+}
+
+// 悔棋 msgNo:102
+message FsRevertReq {
+}
+// msgNo: -102
+message FsRevertRes {
+}
+// 悔棋推送 msgNo:-203
+message FsRevertPush {
+}
+
+// 悔棋是否同意 msgNo:103
+message FsRevertAgreeReq {
+    bool agree = 1; // 是否同意悔棋
+}
+// msgNo: -103
+message FsRevertAgreeRes {
+}
+// 悔棋结果推送  msgNo:-204
+message FsRevertResultPush {
+    bool agree = 1; // 是否同意悔棋
+    repeated Pos pos = 2; // 移除的棋子
+}
+
+// 认输 msgNo:104
+message FsSurrenderReq {
+}
+// msgNo: -104
+message FsSurrenderRes {
+}
+
+// 游戏结束推送  msgNo:-205
+message FsGameOverPush {
+    bool win = 1; // 是否胜利
+    int32 stepUp = 2; // -1 段位下降， 0 段位不变， 1：段位提升
+    int32 star = 3; // 星数
+    string step = 4; // 段位
+    repeated Reward rewardPack = 5; // 奖励包
+    int32 gold = 6; // 获得金币
+    int32 goldLimit = 7; // 金币上限
+    int32 goldAdded = 8; // 今日已获得
+}
+
+// 重新进入游戏请求 msgNo:106
+message FsReEnterGameReq {
+
+}
+// 重新进入游戏返回 msgNo: -106
+message FsReEnterGameRes {
+    Side side = 1; // 黑子，白子
+    int64 startTime = 2; // 开始时间 ms
+    int64 roundTime = 3; // 回合剩余时间 ms
+    int32 revertCount = 5; // 可悔棋次数
+    bool myTurn = 6; // 是否我的回合
+    repeated Col board = 7; // 棋盘
+    bool revert = 8; // 是否悔棋中
+    int64 revertUid = 9; // 悔棋发起人
+    bool end = 11; // 游戏是否结束
+    int64 roundTimeConfig = 12; // 配置回合时间 ms
+    int64 revertTimeConfig = 13; // 配置悔棋时间
+    int32 surrenderRemain = 14; //悔棋剩余回合数
+
+}
+
+// 游戏信息查询 msgNo:107
+message FsGameStatusReq {
+}
+// msgNo: -107
+message FsGameStatusRes {
+    Side side = 1; // 黑子，白子
+    int64 startTime = 2; // 开始时间 ms
+    int64 roundTime = 3; // 回合剩余时间 ms
+    int32 revertCount = 5; // 可悔棋次数
+    bool myTurn = 6; // 是否我的回合
+    bool end = 8; // 游戏是否结束
+
+}
+/////////////////// data ////////////////////////
+
+enum Side {
+    NONE = 0;
+    BLACK = 1;
+    WHITE = 2;
+}
+
+
+message Reward {
+    string id = 1; // 奖励id
+    int32 count = 2; // 奖励数量
+}
+
+message Pos {
+    int32 x = 1;
+    int32 y = 2;
+    Side side = 3;
+}
+message Col {
+    repeated Side side = 1;
+}

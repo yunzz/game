@@ -1,0 +1,1 @@
+protoc --java_out=/Users/jinyunzhe/develop/github/game/game-app/src/main/java ./*.proto 

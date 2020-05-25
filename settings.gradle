@@ -1,0 +1,12 @@
+rootProject.name = 'game'
+include 'game-gateway'
+include 'game-world'
+include 'game-base'
+include 'game-app'
+include 'game-login'
+include 'game-client'
+include 'game-tools'
+include 'game-config'
+include 'game-app-herofight'
+include 'web-apollo'
+

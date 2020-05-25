@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.client.controller.MainUiController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+            <TextField id="address" fx:id="address" editable="false" prefHeight="27.0" prefWidth="425.0" text="127.0.0.1:8000" />
+          <Button mnemonicParsing="false" onAction="#connect" text="连接" />
+        </items>
+      </ToolBar>
+      <SplitPane dividerPositions="0.8234442836468886" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="39.0" layoutY="87.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" VBox.vgrow="SOMETIMES">
+                                 <children>
+                                    <Button fx:id="match" mnemonicParsing="false" text="匹配" />
+                                    <Button mnemonicParsing="false" text="加入房间" />
+                                    <Button fx:id="loginBtn" mnemonicParsing="false" text="开始游戏" />
+                                    <Button fx:id="surrender" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="认输" />
+                                    <Button fx:id="revert" mnemonicParsing="false" text="悔棋" />
+                                    <Button fx:id="cleanBtn" layoutX="134.0" layoutY="10.0" mnemonicParsing="false" text="Clean" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Canvas fx:id="canvas" height="500.0" width="500.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <VBox alignment="TOP_CENTER" layoutX="579.0" prefHeight="510.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="510.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label fx:id="round" text="回合" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox layoutX="10.0" layoutY="39.0" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
+                                             <children>
+                                                <Label text="棋子：">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="chess">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="50.0" prefWidth="200.0" spacing="5.0">
+                                             <children>
+                                                <Label text="EndReason:">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="endReason">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
+                                             <children>
+                                                <Label text="房间号：">
+                                                   <font>
+                                                      <Font name="Times Roman" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="roomNo" text="0">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
+                                             <children>
+                                                <Label text="计时：">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="time">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="565.0" prefWidth="246.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="p1" promptText="p1" text="a" />
+                              <TextField fx:id="p2" layoutX="10.0" layoutY="10.0" promptText="p2" />
+                              <TextField fx:id="p3" layoutX="10.0" layoutY="42.0" promptText="p3" />
+                              <TextField fx:id="p4" layoutX="10.0" layoutY="74.0" promptText="p4" />
+                              <TextField layoutX="10.0" layoutY="106.0" />
+                              <TextField layoutX="10.0" layoutY="138.0" />
+                              <TextField layoutX="10.0" layoutY="170.0" />
+                              <TextField layoutX="10.0" layoutY="202.0" />
+                              <TextField layoutX="10.0" layoutY="234.0" />
+                              <TextField layoutX="10.0" layoutY="266.0" />
+                              <TextField layoutX="10.0" layoutY="298.0" />
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextArea fx:id="console" prefHeight="109.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <ToolBar prefHeight="2.0" prefWidth="981.0">
+        <items>
+            <Label fx:id="status" text="Label" />
+            <Separator orientation="VERTICAL" prefHeight="5.0" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>
